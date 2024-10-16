@@ -1,4 +1,4 @@
-// https://codeforces.com/contest/2/problem/A
+// https://codeforces.com/problemset/problem/32/B
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -43,43 +43,22 @@ const ll INF = 1e9;
 const ld EPS = 1e-9;
 
 void solve() {
-    int n;
-    cin >> n;
-    map<string, int> scores;
-    vector<pair<string, int>> rounds;
-    set<string> winners;
-
-    for (int i = 0; i < n; i++) {
-        string name;
-        int score;
-        cin >> name >> score;
-        rounds.push_back({name, score});
-    }
-
-    for (auto round : rounds) {
-        scores[round.first] += round.second;
-    }
-
-    int highScore = INT_MIN;
-    for (auto score : scores) {
-        highScore = max(highScore, score.second);
-    }
-
-    for (auto score : scores) {
-        if (score.second == highScore) {
-            winners.insert(score.first);
+    string code;
+    cin >> code;
+    unsigned long i = 0;
+    while (i < code.length()) {
+        if (code[i] == '.') {
+            cout << 0;
+            i++;
+        } else if (code[i] == '-') {
+            if (code[i + 1] == '.') {
+                cout << 1;
+            } else {
+                cout << 2;
+            }
+            i += 2;
         }
     }
-
-    scores.clear();
-    for (auto round : rounds) {
-        scores[round.first] += round.second;
-        if (scores[round.first] >= highScore && winners.contains(round.first)) {
-            cout << round.first;
-            return;
-        }
-    }
-    return;
 }
 
 int main() {
