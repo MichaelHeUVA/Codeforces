@@ -42,13 +42,42 @@ const ll MOD = 1e9 + 7;
 const ll INF = 1e9;
 const ld EPS = 1e-9;
 
+#define LIMIT 1000000
+int primes[LIMIT];
+
+void calculatePrimes() {
+    primes[0] = 1;
+    primes[1] = 1;
+    for (ll i = 2; i < LIMIT; i++) {
+        if (primes[i] == 0) {
+            for (ll j = i * i; j < LIMIT; j += i) {
+                primes[j] = 1;
+            }
+        }
+    }
+}
+
+bool isSquare(ll x) {
+    ll sqaureRoot = sqrt(x);
+    return sqaureRoot * sqaureRoot == x;
+}
+
 void solve() {
     int n;
     cin >> n;
-    for (int i = 0; i < n; i++) {
+    calculatePrimes();
+    while (n--) {
         ll x;
         cin >> x;
+        if (isSquare(x) && primes[int(sqrt(x))] == 0) {
+            cout << "YES"
+                 << "\n";
+        } else {
+            cout << "NO"
+                 << "\n";
+        }
     }
+    return;
 }
 
 int main() {
