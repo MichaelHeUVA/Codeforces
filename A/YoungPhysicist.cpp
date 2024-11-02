@@ -15,25 +15,25 @@ const ll INF = 1e9;
 const ld EPS = 1e-9;
 
 void solve() {
-	int n;
-	cin >> n;
-	int x = 0;
-	int y = 0;
-	int z = 0;
-	while(n--) {
-		int x1;
-		int y1;
-		int z1;
-		cin >> x1 >> y1 >> z1;
-		x += x1;
-		y += y1;
-		z += z1;
-	}
-	if(x == 0 && y == 0 && z == 0) {
-		cout << "YES";
-	} else {
-		cout << "NO";
-	}
+    int n;
+    cin >> n;
+    int x = 0;
+    int y = 0;
+    int z = 0;
+    while (n--) {
+        int x1;
+        int y1;
+        int z1;
+        cin >> x1 >> y1 >> z1;
+        x += x1;
+        y += y1;
+        z += z1;
+    }
+    if (x == 0 && y == 0 && z == 0) {
+        cout << "YES";
+    } else {
+        cout << "NO";
+    }
 }
 
 int main() {
