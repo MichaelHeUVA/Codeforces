@@ -1,4 +1,4 @@
-// https://codeforces.com/problemset/problem/263/A
+// http://codeforces.com/problemset/problem/266/B
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -15,20 +15,20 @@ const ll INF = 1e9;
 const ld EPS = 1e-9;
 
 void solve() {
-    int row = 0;
-    int col = 0;
-    for (int i = 0; i < 5; i++) {
-        for (int j = 0; j < 5; j++) {
-            int cell;
-            cin >> cell;
-            if (cell == 1) {
-                row = i;
-                col = j;
+    int n;
+    int t;
+    string s;
+    cin >> n >> t >> s;
+    while (t--) {
+        for (int i = 0; i < n - 1; i++) {
+            if (s[i] == 'B' && s[i + 1] == 'G') {
+                s[i] = 'G';
+                s[i + 1] = 'B';
+                i++;
             }
         }
     }
-    int moves = abs(2 - row) + abs(2 - col);
-    cout << moves;
+    cout << s;
 }
 
 int main() {
