@@ -7,14 +7,18 @@ CXXFLAGS := -Wall -Wextra -std=c++23
 # Find all .cpp files in the current directory
 SOURCES := $(wildcard *.cpp)
 
-# Create a list of executables by replacing .cpp with .exe
-EXECUTABLES := $(SOURCES:.cpp=.exe)
+# Create a list of executables by replacing .cpp and prepending the output directory
+EXECUTABLES := $(patsubst %.cpp,output/%,$(SOURCES))
 
 # Define the recipe for each executable
-all: $(EXECUTABLES)
+all: output $(EXECUTABLES)
 
-# Link each .cpp file into an individual executable ending with .exe
-%.exe: %.cpp 
+# Ensure the output directory exists
+output:
+	mkdir -p output
+
+# Link each .cpp file into an individual executable in the output directory
+output/%: %.cpp 
 	$(CXX) $(CXXFLAGS) -o $@ $<
 
 # Add a clean target to remove generated files
