@@ -2,7 +2,7 @@
 CXX := g++
 
 # Define compiler flags
-CXXFLAGS := -Wall -Wextra -std=c++23
+CXXFLAGS := -Wall -Wextra -std=c++23 -pedantic -Wformat=2 -Wfloat-equal -Wlogical-op -Wredundant-decls -Wconversion -Wcast-qual -Wcast-align -Wuseless-cast -Wno-shadow -Wno-unused-result -Wno-unused-parameter -Wno-unused-local-typedefs -Wno-long-long -DLOCAL_PROJECT -g -DLOCAL_DEBUG -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC
 
 # Find all .cpp files in the current directory
 SOURCES := $(wildcard *.cpp)
