@@ -6,9 +6,8 @@ template <typename A, typename B>
 ostream& operator<<(ostream& os, const pair<A, B>& p) {
     return os << '(' << p.first << ", " << p.second << ')';
 }
-template <typename T_container, typename T = typename enable_if<
-                                    !is_same<T_container, string>::value,
-                                    typename T_container::value_type>::type>
+template <typename T_container,
+          typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type>
 ostream& operator<<(ostream& os, const T_container& v) {
     os << '{';
     string sep;
@@ -30,7 +29,6 @@ void dbg_out(Head H, Tail... T) {
 #define dbg(...)
 #endif
 
-#define ar array
 #define ll long long
 #define ld long double
 #define sza(x) ((int)x.size())
